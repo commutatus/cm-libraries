@@ -1,0 +1,80 @@
+<ng-container *ngIf="data && data.length; else noData">
+  <div class="checkbox-container aiesec-options-overlay" *ngIf="!isMobile">
+    <div class="p-3 filter-bar" *ngIf="options.filter">
+      <input class="mr-2 search-input" type="text" [ngModel]="search" (ngModelChange)="updateData($event)" placeholder="Search">
+      <div>
+        <button class="btn-clear alphabet-btn" [ngClass]="{'op-30': !activeLetters[alphabet]}" *ngFor="let alphabet of alphabets"
+          [disabled]="!activeLetters[alphabet]" (click)="scrollTo(alphabet)" (mouseover)="hoveredAlphabet = alphabet"
+          (mouseout)="hoveredAlphabet = null">
+          {{alphabet}}
+        </button>
+      </div>
+    </div>
+    <div id="scrollingDiv" class="p-3 checkbox-content">
+      <ng-container *ngIf="additionalFilteredItems">
+        <ng-container *ngFor="let key of object.keys(additionalFilteredItems)">
+          <ng-container *ngFor="let item of additionalFilteredItems[key]; let i = index;">
+            <ng-container *ngIf="options.filter">
+              <div class="text-capitalize wd-max-content p-1" *ngIf="i=== 0" [ngClass]="{'grey-out': hoveredAlphabet}">
+                <b class="fs-15">{{ key }}</b>
+              </div>
+            </ng-container>
+            <div class="checkbox-option pr-5 p-1" [ngClass]="{'grey-out': hoveredAlphabet}">
+              <input class="aiesec-checkbox mr-2" type="checkbox" [id]="item.id" [(ngModel)]="item.checked" (change)="triggerAdditionalChange(item)">
+              <label class="checbox-label" [for]="item.id">{{ item[bindLabel] }}</label>
+            </div>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+      <ng-container *ngFor="let item of filteredItems; let i = index;">
+        <ng-container *ngIf="options.filter">
+          <ng-container *ngIf="item.showAlphabet">
+            <div [id]="'alphabet-' + item[bindLabel].charAt(0)" class="text-capitalize wd-max-content p-1" [ngClass]="{'grey-out': hoveredAlphabet && hoveredAlphabet !== item[bindLabel].charAt(0) }">
+              <b class="fs-15">{{ item[bindLabel].charAt(0) }}</b>
+            </div>
+          </ng-container>
+        </ng-container>
+        <div class="checkbox-option pr-5 p-1" [ngClass]="{'grey-out': hoveredAlphabet && hoveredAlphabet !== item[bindLabel].charAt(0) }">
+          <input class="aiesec-checkbox mr-2" type="checkbox" [id]="item.id" [(ngModel)]="item.checked" (change)="triggerChange(item)">
+          <img class="checkbox-image" [src]="item[options.imageUrlKey]" alt="{{item[bindLabel]}} image" *ngIf="options.image">
+          <label class="checbox-label" [for]="item.id">{{ item[bindLabel] }}</label>
+        </div>
+      </ng-container>
+    </div>
+    <div class="p-3 aiesec-options-overlay__footer" *ngIf="(selectedData && selectedData.length) || (selectedIds && selectedIds.length) || hasAdditionalFilterSelection">
+      <button class="btn-clear" (click)="clearSelections()">Clear</button>
+    </div>
+  </div>
+
+  <div class="checkbox-container-mobile" *ngIf="isMobile">
+    <div class="p-2 pl-3 filter-bar" *ngIf="options.filter">
+      <input class="mr-2 search-input" type="text" [ngModel]="search" (ngModelChange)="updateData($event)" placeholder="Search">
+    </div>
+    <div id="scrollingDiv" class="pt-2 pb-2 pl-3 checkbox-content">
+      <ng-container *ngIf="additionalFilteredItems">
+        <ng-container *ngFor="let key of object.keys(additionalFilteredItems)">
+          <ng-container *ngFor="let item of additionalFilteredItems[key]; let i = index;">
+            <div class="checkbox-option pr-5 p-1" [ngClass]="{'grey-out': hoveredAlphabet}">
+              <input class="aiesec-checkbox-clean mr-3" type="checkbox" [id]="item.id" [(ngModel)]="item.checked"
+                (change)="triggerChange(item)">
+              <label class="checbox-label" [for]="item.id">{{ item[bindLabel] }}</label>
+            </div>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+      <ng-container *ngFor="let item of filteredItems; let i = index;">
+        <div class="checkbox-option pr-5 p-1" [ngClass]="{'grey-out': hoveredAlphabet && hoveredAlphabet !== item[bindLabel].charAt(0) }">
+          <input class="aiesec-checkbox-clean mr-3" type="checkbox" [id]="item.id" [(ngModel)]="item.checked" (change)="triggerChange(item)">
+          <img class="checkbox-image" [src]="item[options.imageUrlKey]" alt="{{item[bindLabel]}} image" *ngIf="options.image">
+          <label class="checbox-label" [for]="item.id">{{ item[bindLabel] }}</label>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #noData>
+  <div>
+    No items to filter
+  </div>
+</ng-template>
