@@ -119,6 +119,41 @@
           }
         }
       }
+    },
+    "cm-filter-checkbox": {
+      "projectType": "library",
+      "root": "projects/cm-filter-checkbox",
+      "sourceRoot": "projects/cm-filter-checkbox/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/cm-filter-checkbox/tsconfig.lib.json",
+            "project": "projects/cm-filter-checkbox/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/cm-filter-checkbox/src/test.ts",
+            "tsConfig": "projects/cm-filter-checkbox/tsconfig.spec.json",
+            "karmaConfig": "projects/cm-filter-checkbox/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/cm-filter-checkbox/tsconfig.lib.json",
+              "projects/cm-filter-checkbox/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "cm-libraries"
 }

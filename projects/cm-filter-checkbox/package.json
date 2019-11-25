@@ -1,0 +1,11 @@
+{
+  "name": "cm-filter-checkbox",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "ng build cm-filter-checkbox"
+  },
+  "peerDependencies": {
+    "@angular/common": "^8.1.3",
+    "@angular/core": "^8.1.3"
+  }
+}
