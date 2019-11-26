@@ -1,6 +1,6 @@
 {
   "name": "cm-filter-checkbox",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "scripts": {
     "build": "ng build cm-filter-checkbox",
     "postpublish": "rm -rf dist/"
