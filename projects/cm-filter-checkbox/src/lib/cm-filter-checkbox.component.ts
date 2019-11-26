@@ -56,6 +56,7 @@ export class CmFilterCheckboxComponent implements OnInit {
   activeLetters: any = {};
   hoveredAlphabet: string;
   hasAdditionalFilterSelection = false;
+  search: string;
 
   constructor() { }
 

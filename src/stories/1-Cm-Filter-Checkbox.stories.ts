@@ -1,7 +1,6 @@
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 
-import { Button } from '@storybook/angular/demo';
 import { CmFilterCheckboxComponent } from '../../projects/cm-filter-checkbox/src/lib/cm-filter-checkbox.component';
 
 export default {
