@@ -9,7 +9,7 @@
     "publish": "npx lerna run build && npx lerna publish  --contents dist",
     "e2e": "ng e2e",
     "storybook": "start-storybook -p 6006",
-    "build": "build-storybook -c .storybook -o public"
+    "build": "build-storybook -c .storybook -o dist"
   },
   "dependencies": {
     "@angular/animations": "~8.1.0",
