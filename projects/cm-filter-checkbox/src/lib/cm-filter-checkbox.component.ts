@@ -63,10 +63,10 @@ export class CmFilterCheckboxComponent implements OnInit {
   ngOnInit() {
     if (this.data && this.data.length) {
       this.data = this.data.sort((a, b) => {
-        if (a[this.bindLabel] < b[this.bindLabel]) {
+        if (a[this.bindLabel].toLowerCase() < b[this.bindLabel].toLowerCase()) {
           return -1;
         }
-        if (a[this.bindLabel] > b[this.bindLabel]) {
+        if (a[this.bindLabel].toLowerCase() > b[this.bindLabel].toLowerCase()) {
           return 1;
         }
         return 0;

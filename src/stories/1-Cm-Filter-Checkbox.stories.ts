@@ -2,6 +2,8 @@ import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 
 import { CmFilterCheckboxComponent } from '../../projects/cm-filter-checkbox/src/lib/cm-filter-checkbox.component';
+// import { CmFilterCheckboxComponent } from '../../node_modules/cm-filter-checkbox';
+import { FRUITS } from './sample-data';
 
 export default {
   title: 'Filter Checkbox',
@@ -10,7 +12,11 @@ export default {
 export const standard = () => ({
   component: CmFilterCheckboxComponent,
   props: {
-    text: 'Hello Button',
+    data: FRUITS,
+    bindLabel: 'name',
+    options: {
+      filter: true
+    }
   },
 });
 
