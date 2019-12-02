@@ -3,16 +3,18 @@ import { linkTo } from '@storybook/addon-links';
 
 import { CmFilterCheckboxComponent } from '../../projects/cm-filter-checkbox/src/lib/cm-filter-checkbox.component';
 // import { CmFilterCheckboxComponent } from '../../node_modules/cm-filter-checkbox';
-import { FRUITS } from './sample-data';
+import { GenerateRandomNames } from './sample-data';
 
 export default {
   title: 'Filter Checkbox',
 };
 
+const Names = GenerateRandomNames(200);
+
 export const standard = () => ({
   component: CmFilterCheckboxComponent,
   props: {
-    data: FRUITS,
+    data: Names,
     bindLabel: 'name',
   },
 });
@@ -20,7 +22,7 @@ export const standard = () => ({
 export const checboxWithFilter = () => ({
   component: CmFilterCheckboxComponent,
   props: {
-    data: FRUITS,
+    data: Names,
     bindLabel: 'name',
     options: {
       filter: true

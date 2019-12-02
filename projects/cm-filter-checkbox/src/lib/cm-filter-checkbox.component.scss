@@ -35,6 +35,9 @@
       color: #9b9b9b;
       display: inline-flex;
       justify-content: center;
+      &:focus {
+        outline: none;
+      }
     }
   }
 
@@ -47,6 +50,7 @@
     color: #52565E;
     font-size: 14px;
     padding: 0.5rem 1rem 0;
+    min-width: 400px;
 
     &__alphabet {
       text-transform: capitalize;

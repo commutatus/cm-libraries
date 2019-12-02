@@ -266,11 +266,13 @@ export class CmFilterCheckboxComponent implements OnInit {
     this.items.forEach(i => {
       this.activeLetters[i[this.bindLabel].charAt(0).toUpperCase()] = true;
     });
-    Object.keys(this.additionalData).forEach(key => {
-      this.additionalData[key].forEach(i => {
-        this.activeLetters[i[this.bindLabel].charAt(0).toUpperCase()] = true;
+    if (this.additionalData) {
+      Object.keys(this.additionalData).forEach(key => {
+        this.additionalData[key].forEach(i => {
+          this.activeLetters[i[this.bindLabel].charAt(0).toUpperCase()] = true;
+        });
       });
-    });
+    }
   }
 
   scrollTo(c) {
