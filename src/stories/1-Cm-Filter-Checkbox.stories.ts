@@ -14,16 +14,17 @@ export const standard = () => ({
   props: {
     data: FRUITS,
     bindLabel: 'name',
-    options: {
-      filter: true
-    }
   },
 });
 
 export const checboxWithFilter = () => ({
   component: CmFilterCheckboxComponent,
   props: {
-    text: 'Hello Button',
+    data: FRUITS,
+    bindLabel: 'name',
+    options: {
+      filter: true
+    }
   },
 });
 

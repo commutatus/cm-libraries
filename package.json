@@ -4,13 +4,12 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "publish": "npx lerna run build && npx lerna publish  --contents dist",
     "e2e": "ng e2e",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build": "build-storybook -c .storybook -o public"
   },
   "dependencies": {
     "@angular/animations": "~8.1.0",
